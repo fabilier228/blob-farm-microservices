@@ -80,4 +80,4 @@ networks:
 
 secrets:
   postgres_db_password:
-    file: ./secrets/postgres_password.txt # <-- Upewnij się, że ścieżka jest poprawna!
+    file: ./secrets/postgres_password.txt

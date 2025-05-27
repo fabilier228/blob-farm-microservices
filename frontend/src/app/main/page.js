@@ -8,7 +8,6 @@ export default function BlobFarm() {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
-  // Pobierz blob-y z API
   const fetchBlobs = () => {
     fetch("http://localhost:3000/get-blobs")
       .then((res) => res.json())
