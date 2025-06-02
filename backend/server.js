@@ -1,28 +1,29 @@
 const express = require('express');
 const { Client } = require('pg');
 const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const readSecret = (secretName) => {
-  try {
-    return fs.readFileSync(path.join('/run/secrets', secretName), 'utf8').trim();
-  } catch (err) {
-    console.warn(`Secret ${secretName} not found or inaccessible. Falling back to environment variable or default.`);
-    return null;
-  }
-}
+// const readSecret = (secretName) => {
+//   try {
+//     return fs.readFileSync(path.join('/run/secrets', secretName), 'utf8').trim();
+//   } catch (err) {
+//     console.warn(`Secret ${secretName} not found or inaccessible. Falling back to environment variable or default.`);
+//     return null;
+//   }
+// }
 
 
 const dbConfig = {
   user: process.env.POSTGRES_USER || 'user',
   host: process.env.DB_HOST || 'db',
   database: process.env.POSTGRES_DB || 'mydatabase',
-  password: readSecret('postgres_db_password') || process.env.POSTGRES_PASSWORD || 'password',
+  // password: readSecret('postgres_db_password') || process.env.POSTGRES_PASSWORD || 'password',
+  password: process.env.POSTGRES_PASSWORD || 'password',
   port: process.env.DB_PORT || 5432,
 };
 
