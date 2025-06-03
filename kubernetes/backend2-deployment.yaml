@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: backend2
-        image: fabilier228/backend2-service:latest
+        image: fabilier228/backend2-service:1.0
         ports:
         - containerPort: 3002
         env:

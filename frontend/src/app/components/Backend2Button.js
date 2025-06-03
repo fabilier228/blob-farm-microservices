@@ -9,7 +9,7 @@ export default function Backend2Button() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('api/second-backend/data');
+      const response = await fetch('api2/data');
       const data = await response.json();
       console.log(data);
     

@@ -12,7 +12,9 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'backend2' });
 });
 
-app.get('/api/backend2/data', async (req, res) => {
+app.get('/data', async (req, res) => {
+  console.log('SUUP');
+  
   try {
     res.json({
       message: 'Data from backend2',
