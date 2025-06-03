@@ -31,8 +31,6 @@ services:
       PORT: 3000
       DB_HOST: db
       DB_PORT: 5432
-      POSTGRES_USER: ${POSTGRES_USER:-user}
-      POSTGRES_DB: ${POSTGRES_DB:-mydatabase}
     secrets: 
       - postgres_db_password
     ports:
@@ -44,6 +42,26 @@ services:
       - app_network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  backend2:
+    build:
+      context: ./backend2
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      PORT: 3002
+      DB_HOST: db
+      DB_PORT: 5432
+    ports:
+      - "3002:3002"
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/"]
       interval: 10s
       timeout: 5s
       retries: 5

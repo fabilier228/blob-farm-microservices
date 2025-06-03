@@ -8,7 +8,6 @@ RUN npm ci --only=production
 
 COPY server.js ./
 
-# --- PRODUCTION STAGE ---
 FROM node:18-alpine
 
 WORKDIR /app
