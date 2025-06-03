@@ -9,7 +9,7 @@ export default function BlobFarm() {
   const [content, setContent] = useState("");
 
   const fetchBlobs = () => {
-    fetch("http://localhost:3000/get-blobs")
+    fetch("/api/get-blobs")
       .then((res) => res.json())
       .then((data) => {
         setBlobs(data);
@@ -28,7 +28,7 @@ export default function BlobFarm() {
 
     if (!name || !content) return alert("Uzupełnij wszystkie pola!");
 
-    fetch("http://localhost:3000/create-blob", {
+    fetch("/api/create-blob", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, content }),
